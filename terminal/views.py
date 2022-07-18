@@ -18,7 +18,7 @@ def Add_command(request):
         return Response(
                 {
                     "status": True,
-                    "message": "command saved under {0}".format(framework),
+                    "message": "command saved under {0} collections".format(framework),
                 },
                 status=status.HTTP_201_CREATED,
             )
