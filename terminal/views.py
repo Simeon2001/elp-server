@@ -27,8 +27,6 @@ def Add_command(request):
 def search_command(request):
     if request.method == "POST":
         query = request.data.get("search")
-        print(query)
         data = Command_Bank.objects.filter(Q(framework__icontains=query) | Q(title__icontains=query))
         serializer_class = Command_serializer(data,many=True)
         return Response(serializer_class.data)
-        print(data)
