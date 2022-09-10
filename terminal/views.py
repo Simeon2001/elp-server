@@ -11,7 +11,6 @@ from django.db.models import Q
 def Add_command(request):
     if request.method == "POST":
         framework = request.data.get("framework")
-        print(framework)
         title = request.data.get("title")
         command = request.data.get("command")
         store = Command_Bank.objects.create(framework=framework, title=title, command=command)
