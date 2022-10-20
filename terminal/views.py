@@ -4,7 +4,7 @@ from terminal.serializers import Command_serializer
 from .models import Command_Bank
 from rest_framework.response import Response
 from rest_framework import status
-from django.db.models import Q
+from django.contrib.postgres.search import SearchVector, SearchQuery
 
 
 @api_view(["post"])
@@ -26,6 +26,7 @@ def Add_command(request):
 def search_command(request):
     if request.method == "POST":
         query = request.data.get("search")
-        data = Command_Bank.objects.filter(Q(framework__icontains=query) | Q(title__icontains=query))
+        data = Command_Bank.objects.filter(title__icontains=query)
+        data = Command_Bank.objects.annotate(search=SearchVector("title", "framework", "command")).filter(search=SearchQuery(query))
         serializer_class = Command_serializer(data,many=True)
         return Response(serializer_class.data)
