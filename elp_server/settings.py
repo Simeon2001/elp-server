@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv("HOST"), "9f20-102-89-46-199.ngrok.io"]
+ALLOWED_HOSTS = [os.getenv("HOST"), "9f20-102-89-46-199.ngrok.io", "elp-simeon2001.koyeb.app"]
 
 
 # Application definition
@@ -144,4 +144,4 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-# sha work
+# simeon here
