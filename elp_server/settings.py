@@ -29,9 +29,9 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv("HOST")]
+ALLOWED_HOSTS = [os.getenv("HOST"), "9f20-102-89-46-199.ngrok.io"]
 
 
 # Application definition
@@ -85,17 +85,10 @@ WSGI_APPLICATION = 'elp_server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+  "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 
 
