@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn elp_server.wsgi --log-file -
+web: python manage.py migrate && gunicorn --worker-tmp-dir /dev/shm elp_server.wsgi --log-file -
